@@ -1,0 +1,18 @@
+{
+  "appPort": 5001,
+  "proxy": [
+    {
+      "name": "Stage API",
+      "port": 5009,
+      "target": "https://stage.api.arcadiagroup.co.uk/api",
+      "host": "stage.api.arcadiagroup.co.uk"
+    },
+    {
+      "name": "Monty CMS",
+      "port": 5002,
+      "target": "https://cms.digital.arcadiagroup.co.uk",
+      "host": "cms.digital.arcadiagroup.co.uk"
+    }
+  ],
+  "logLevel": "debug"
+}

@@ -1,0 +1,12 @@
+{
+  "appPort": 5001,
+  "proxy": [
+    {
+      "name": "Stage API",
+      "port": 5009,
+      "target": "https://stage.api.arcadiagroup.co.uk/api",
+      "host": "stage.api.arcadiagroup.co.uk"
+    }
+  ],
+  "logLevel": "debug"
+}

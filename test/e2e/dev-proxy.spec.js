@@ -4,7 +4,8 @@ import request from 'superagent';
 const baseUrl = 'http://localhost:5001';
 
 const clearLogBtnSelector = '.test-clearLog';
-const responseSelector = '.test-responseList > .test-response li';
+const
+ = '.test-responseList > .test-response li';
 
 const clearMocksBtnSelector = '.test-clearMocks';
 const mocksSelector = '.test-mockList > .test-response';

@@ -17,6 +17,7 @@ export default ({ dataStore, proxyConfig, socketIo }) => {
 
     proxyRes.on('end', () => {
       setTimeout(() => {
+        console.log(responseBody)
         if (proxyRes.statusCode === 404) {
           const loggedResponse = dataStore.logResponse(proxyConfig.port, req.originalUrl, String('Not found'), req.headers.host);
           socketIo.emit('request_proxied', { loggedResponse, proxyId: proxyConfig.port });
@@ -32,8 +33,14 @@ export default ({ dataStore, proxyConfig, socketIo }) => {
     });
   });
 
-  proxy.on('error', (err) => {
+  proxy.on('error', (err, aaaa, bbbb, cccc, dddd, eeee) => {
     winston.error(`Proxy Error from target ${proxyConfig.target}`, err);
+    socketIo.emit('request_proxied', { loggedResponse: { url: aaaa.url }, proxyId: proxyConfig.port });
+    // console.log(err, '||||||', aaaa, '&&&&', bbbb, 'KKKKK', cccc, 'LLLL', dddd, 'MMMM', eeee)
+    // console.log('111XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', err)
+    // console.log('222XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', aaaa.url)
+    // console.log('333XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', bbbb.url)
+    // console.log('444XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', cccc.url)
   });
 
   proxy.on('proxyReq', (proxyReq, req, /* res, options */) => {
